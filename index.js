@@ -1,3 +1,4 @@
+//Fetching background image and author API
 try {
     const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     const data = await res.json()
@@ -9,7 +10,7 @@ try {
     document.getElementById("author").textContent = `By: Dodi Achmad`
 }
 
-//Used catch method and changed currency calculation from dollar to Rand
+//Used catch method for error, used coingecko API for crypto info and changed currency calculation from dollar to Rand, crypto is Bitcoin.
 
 try {
     const res = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
@@ -30,12 +31,15 @@ try {
     console.error(err)
 }
 
+//Function to get the current time in 24 Hr format
+
 function getCurrentTime() {
     const date = new Date()
-    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", { timeStyle: "short" })
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-gb", { timeStyle: "short" })
 }
 
 setInterval(getCurrentTime, 1000)
+//Sourcing location, current weather and icon. Degrees converted from imperial to metric measurement.
 
 navigator.geolocation.getCurrentPosition(async position => {
     try {
